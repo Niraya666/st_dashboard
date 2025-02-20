@@ -15,7 +15,7 @@ if not os.path.exists(DATA_FILE):
         "Start Time",
         "Tool Using Support",
         "Multimodal Support", 
-        "Inference Support",
+        "Reasoning Support",
         "VLLM Version",
         "Status"
     ])
@@ -60,7 +60,7 @@ with st.sidebar:
                     "Start Time": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
                     "Tool Using Support": "Yes" if tool_using else "No",
                     "Multimodal Support": "Yes" if multimodal else "No",
-                    "Inference Support": "Yes" if inference else "No",
+                    "Reasoning Support": "Yes" if inference else "No",
                     "VLLM Version": vllm_version
                     
                 }
@@ -85,12 +85,12 @@ if not df.empty:
     if st.button("Update Status"):
         df.loc[status_update_idx, "Status"] = new_status
         df.to_csv(DATA_FILE, index=False)
-        st.experimental_rerun()
+        st.rerun()
     
     if st.button("Delete Selected Services"):
         df = df.drop(selected_indices).reset_index(drop=True)
         df.to_csv(DATA_FILE, index=False)
-        st.experimental_rerun()
+        st.rerun()
     
     # Display styled table
     st.dataframe(
