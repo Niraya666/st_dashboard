@@ -42,7 +42,7 @@ with st.sidebar:
         )
         tool_using = st.checkbox("Tool Using Support")
         multimodal = st.checkbox("Multimodal Support")
-        inference = st.checkbox("Inference Support")
+        inference = st.checkbox("Reasoning Support")
         vllm_version = st.text_input("VLLM Version", help="e.g.: 0.2.0")
         is_running = st.checkbox("Running Status", value=True)
         
